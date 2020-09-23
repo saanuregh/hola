@@ -1,0 +1,42 @@
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.build]
+command = "cargo"
+args = ["build", "--features=embed"]
+
+[tasks.release]
+command = "cargo"
+args = ["build", "--features=embed", "--release"]
+
+[tasks.install]
+script = [
+	"sudo cp conf/hola /etc/pam.d/",
+	"sudo rm -f /usr/lib/security/pam_hola.so",
+	"sudo cp target/debug/libpam_hola.so  /usr/lib/security/pam_hola.so",
+	"sudo cp -r pam_hola /usr/lib/security/",
+	"sudo cp target/debug/hola /usr/lib/security/pam_hola/hola",
+	"sudo chmod 600 -R /usr/lib/security/pam_hola",
+	"sudo ln -sf /usr/lib/security/pam_hola/hola /usr/bin/hola",
+	"sudo chmod +x /usr/lib/security/pam_hola/hola",
+]
+dependencies = ["build"]
+
+[tasks.install_release]
+script = [
+	"sudo cp conf/hola /etc/pam.d/",
+	"sudo rm -f /usr/lib/security/pam_hola.so",
+	"sudo cp target/release/libpam_hola.so  /usr/lib/security/pam_hola.so",
+	"sudo cp -r pam_hola /usr/lib/security/",
+	"sudo cp target/release/hola /usr/lib/security/pam_hola/hola",
+	"sudo chmod 600 -R /usr/lib/security/pam_hola",
+	"sudo ln -sf /usr/lib/security/pam_hola/hola /usr/bin/hola",
+	"sudo chmod +x /usr/lib/security/pam_hola/hola",
+]
+dependencies = ["release"]

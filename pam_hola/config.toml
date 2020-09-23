@@ -1,0 +1,48 @@
+# Hola config file
+# Press CTRL + X to save in the nano editor
+
+[core]
+# Print that face detection is being attempted
+detection_notice = false
+
+# Do not print anything when a face verification succeeds
+no_confirmation = false
+
+# When a user without a known face model tries to use this script, don't
+# show an error but fail silently
+suppress_unknown = false
+
+# Timeout fails silently
+suppress_timeout = false
+
+# Disable Hola in remote shells
+ignore_ssh = true
+
+# Disable Hola if lid is closed
+ignore_closed_lid = true
+
+# Disable Hola in the PAM
+# The Hola command will still function
+disabled = false
+
+# Use CNN instead of HOG
+# CNN model is much more accurate than the HOG based model, but takes much more
+# computational power to run, and is meant to be executed on a GPU to attain reasonable speed.
+use_cnn = false
+
+[video]
+# The certainty of the detected face belonging to the user of the account
+# On a scale from 0 to 1, values above 0.6 are not recommended
+# Lower is better
+certainty = 0.6
+
+# The number of seconds to search before timing out
+timeout = 10
+
+# The path of the device to capture frames from
+# Should be set automatically by an installer if your distro has one
+device = 0
+
+# Scale down the video feed to this maximum height
+# Speeds up face recognition but can make it less precise
+max_height = 320

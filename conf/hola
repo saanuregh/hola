@@ -1,0 +1,2 @@
+auth sufficient pam_hola.so
+account sufficient pam_hola.so
