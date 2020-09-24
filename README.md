@@ -43,4 +43,4 @@ To see all the CLI command, run `sudo hola help`
 
 ## Caveats
 
-This package is in no way as secure as a password and will never be, do not use this as your sole authentication method. To minimize the chance of this program being compromised like Howdy, it's recommended to leave Hola in /lib/security and to keep it read-only.
+This package is in no way as secure as a password and will never be, do not use this as your sole authentication method. To minimize the chance of this program being compromised, it's recommended to leave Hola in /lib/security and to keep it read-only.
